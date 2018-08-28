@@ -1,0 +1,80 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Challenge #1 Inter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        const schedule = () => {
+            let events = [];
+            let exit = false;
+            let tempString;
+            while(exit === false) {
+                let seletion = parseInt(prompt(`Please select what you would like to do.\n\r1) Add Event\n\r2) Edit Event\n\r3) Delete Event\n\r4) View Events\n\r5) Exit`))
+                switch(seletion) {
+                    case 1:
+                        let name = prompt(`What is the name of the event?`);
+                        let time = parseInt(prompt(`What time is the event?`));
+                        if(event[time] === undefined) {
+                            event[time] = name;
+                        } else {
+                            alert(`This time slot is already taken please edit or delete the previous event`)
+                        }
+                    break;
+                    case 2: 
+                        tempString = ``;
+                        for(i=0; i<=23; i++) {
+                            if(event[i] !== undefined) {
+                                tempString += `${event[i]} @ ${i}\n\r`;
+                            }
+                        }
+                        let edit = parseInt(prompt(`${tempString} Select what event you'd like to edit.`));
+                        if (event[edit] !== undefined) {
+                            let newName = prompt(`${event[edit]}\n\r What is the new name of the event?`);
+                            let newTime = parseInt(prompt(`${edit}\n\r What is the new time?`))
+                            if(newTime != edit) {
+                                event[edit] = undefined;
+                                event[newTime] = newName;
+                            } else {
+                                event[edit] = newName;
+                            } 
+                        } else {
+                                alert(`There is no event at this time`);
+                        }
+                    break;
+                    case 3: 
+                        tempString = ``;
+                        for(i=0; i<=23; i++) {
+                            if(event[i] !== undefined) {
+                                tempString += `${event[i]} @ ${i}\n\r`;
+                            }
+                        }
+                        let deleteEvent = parseInt(prompt(`${tempString} Please choose an event you would like to delete`));
+                        if (event[deleteEvent] !== undefined) {
+                            event[deleteEvent] = undefined;
+                        } else {
+                            alert(`There is no event to delete at the selected time`);
+                        }
+                    break;
+                    case 4:
+                        tempString = ``;
+                        for(i=0; i<=23; i++) {
+                            if(event[i] !== undefined) {
+                                tempString += `${event[i]} @ ${i}\n\r`;
+                            }
+                        }
+                        alert(`${tempString} This are you events today`);
+                    break;
+                    case 5:
+                        exit = true;
+                    break;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Calender" onclick="schedule();">    
+</body>
+</html>
