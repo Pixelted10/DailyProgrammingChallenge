@@ -1,0 +1,38 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        const guessingGame = () => {
+            let higherNum = 100;
+            let lowerNum = 1;
+            let correctGuess = false;
+            alert(`Pick a number between 1 and 100`);
+            while (correctGuess !== true) {
+               let guess = Math.floor(Math.random() * (higherNum - lowerNum + 1)) + lowerNum;
+               let selection = parseInt(prompt(`${guess}\n\rIs this your number?\n\r1) Too High 2) Too Low 3) Correct`))
+                switch (selection) {
+                    case 1:
+                        alert(`That was too high dammit`);
+                        higherNum = guess - 1;
+                    break;
+                    case 2:
+                        alert(`That was too low dammit`);
+                        lowerNum = guess + 1;
+                    break;
+                    case 3:
+                        alert(`Correct guess amazing`);
+                        correctGuess = true;
+                    break;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Guessing Game" onclick="guessingGame()">
+</body>
+</html>
