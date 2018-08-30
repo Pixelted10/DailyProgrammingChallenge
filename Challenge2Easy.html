@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Challenge 2 Easy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        const forceCalc = () => {
+            let mass = entry.mass.value;
+            let acceleration = entry.acceleration.value;
+            let force = entry.force.value;
+            if (force && acceleration && mass) {
+                alert(`Please only fill in 2 of the boxes`);
+            } else if (acceleration && mass) {
+                force = mass * acceleration;
+                document.getElementById('Result').innerHTML += `${mass} * ${acceleration} = ${force}<br>`;
+                alert(force);
+            } else if (force && acceleration) {
+                mass = force / acceleration;
+                document.getElementById('Result').innerHTML += `${force} / ${acceleration} = ${mass}<br>`;
+                alert(mass);
+            } else if (force && mass) {
+                acceleration = force / mass;
+                document.getElementById('Result').innerHTML += `${force} / ${mass} = ${acceleration}<br>`;
+                alert(acceleration);
+            } else {
+                alert(`Please fill in 2 of the boxes`);
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="entry">
+        <label for="force">Force:</label><br>
+        <input name="force" type="number"></input><br>
+        <label for="mass">Mass:</label><br>
+        <input name="mass" type="number"></input><br>
+        <label for="acceleration">Acceleration:</label><br>
+        <input name="acceleration" type="number"></input><br>
+        <input type="button" value="Submit" onClick="forceCalc()">   
+    </form>
+    
+    <div id="Result"></div>
+</body>
+</html>
