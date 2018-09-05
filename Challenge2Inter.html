@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Challenge 2 Inter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        //const gameManager = () => {
+        //}
+        let x = 0;
+        let y = 0;
+        const movementSelect = () => {
+            let movingTo = entry.movement.value;
+            if ((movingTo === "N" || movingTo === "n") && (x <= 9)) {
+                x++
+                document.getElementById("x").innerHTML = `${x}`;
+            } else if ((movingTo === "S" || movingTo === "s") && (x >= -9)) {
+                x--
+                document.getElementById("x").innerHTML = `${x}`;
+            } else if ((movingTo === "E" || movingTo === "e") && (y <= 9)) {
+                y++
+                document.getElementById("y").innerHTML = `${y}`;
+            } else if ((movingTo === "W" || movingTo === "w") && (y >= -9)) {
+                y--
+                document.getElementById("y").innerHTML = `${y}`;
+            } else {
+                alert("You cannot progress any further this way");
+            }
+        }
+        const storyProgressX = (movementX) => {
+            if (x === 1) {
+                document.getElementById("storyX").innerHTML = `You move slowly down the path`;
+            } else if (x === 2) {
+                document.getElementById("storyX").innerHTML = `You continue towards a dark house`;
+            } else {
+                document.getElementById("storyX").innerHTML = ` `
+            }
+        }
+        const storyProgressY = (movementY) => {
+            if (y === 1) {
+                document.getElementById("storyY").innerHTML = `You move slowly down the path`;
+            } else if (y === 2) {
+                document.getElementById("storyY").innerHTML = `You continue towards a dark house`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3 style="font-family: Arial, Helvetica, sans-serif">Welcome to the Game!</h3>
+    <p>(<span id="x">0</span>,<span id="y">0</span>)</p>
+    <div>
+        <p><span id="storyX"></span>, <span id="storyY"></span></p>
+    </div>
+    <form name="entry">
+        <label for="movement">Where would you like to go?<br> (n)orth (e)ast (s)outh (w)est<br></label><br>
+        <input name="movement" type="text"><br>
+        <input type="button" value="Submit" onclick="movementSelect(), storyProgressX(), storyProgressY()">
+    </form>
+</body>
+</html>
